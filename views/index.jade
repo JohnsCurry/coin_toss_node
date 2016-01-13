@@ -1,0 +1,22 @@
+extends layout
+head
+  link(rel="stylesheet" type="text/css" href="/stylesheets/animate.css")
+
+block content
+  h1 Hello World
+  p Welcome to #{title}
+
+  button(id="heads") Heads
+  button(id="tails") Tails
+  button(id="flipCoin") Flip Coin!
+  button(id="playAgain") Play Again
+  input(type="text" id="inputQuery" placeholder="Bet amount $$")
+  button(id="placeBet") Place Bet!
+
+  h3
+
+  div(class="image")
+
+
+  script(src="/javascripts/jquery-2.2.0.js")
+  script(src="/javascripts/main.js")
