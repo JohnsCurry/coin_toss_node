@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+.image {
+  width: 100px;
+  height: 100px;
+}
+
+.tails {
+  width: 100px;
+  height: 100px;
+}
+
+.heads {
+  width: 100px;
+  height: 100px;
+}
