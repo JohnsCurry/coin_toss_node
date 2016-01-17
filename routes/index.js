@@ -5,14 +5,12 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var db = req.db;
   var collection = db.get('highScores');
-  var collectionObject = collection.find();
-  console.log(collectionObject);
-  //collection.find({}, {}, function(e, docs){
-  //  res.render('index', {
-  //    "highScores": docs
-  //  });
-  //});
-  res.render('index', { title: 'Express' });
+  collection.find({}, {}, function(e, docs){
+    res.render('index', {
+      "highScores": docs
+    });
+  });
+  //res.render('index', { title: 'Express' });
 });
 
 module.exports = router;

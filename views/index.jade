@@ -15,7 +15,11 @@ block content
 
   div(class="image")
 
- 
+  ul
+    each user, i in highScores
+      li
+        = user.name
+        = user.score 
 
 
   script(src="/javascripts/jquery-2.2.0.js")
