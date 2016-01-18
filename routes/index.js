@@ -6,14 +6,37 @@ router.get('/', function(req, res, next) {
   var db = req.db;
   var collection = db.get('highScores');
   collection.find({}, {}, function(e, docs){
-    console.log(docs);
-    console.log("clear clear clear");
     docs.sort(compareObjs);
     res.render('index', {
       "highScores": docs
     });
   });
   //res.render('index', { title: 'Express' });
+});
+
+router.post('/addScore', function(req, res){
+  var db = req.db;
+  var collection = db.get('highScores');
+  var score = req.body.score;
+  console.log(score + " Is the score for this player");
+
+  collection.insert({
+    "name" : "TestUser",
+    "score" : score
+  }, function(err, doc) {
+    if (err) {
+      res.send("There was an error");
+    } else {
+      res.redirect('/');
+    }
+  });
+
+//  db.collection.insertOne({ 'name': "testUser", 'score': score},
+//    function(err, r){
+//      assert.equal(null, err);
+//      res.send("Document inserted with an id");
+//    }
+//  );
 });
 
 

@@ -19,6 +19,7 @@ $(document).ready(function(){
   $( "#flipCoin" ).prop('disabled', true);
   $( "#heads" ).prop('disabled', true);
   $( "#tails" ).prop('disabled', true);
+  $( "#endGame" ).prop('disabled', true);
 
   //setting the heading so I can change it depending on how much the user has in the wallet.
   var myHeading = document.querySelector('h1');
@@ -94,6 +95,7 @@ $(document).ready(function(){
       myHeading.textContent = "Welcome to Coin Toss! You have $" + wallet;
       //allow user to play again.
       $( "#playAgain" ).prop('disabled', false);
+      $( "#endGame" ).prop('disabled', false);
     } else {
       //lose situation
       $(gameInstructions).html("Coin Landed on " + flipValue + " You Lose $" + bet + "! Play again?");
@@ -104,6 +106,7 @@ $(document).ready(function(){
         $(gameInstructions).html("GAME OVER!");
       } else {
         $( "#playAgain" ).prop('disabled', false);
+        $( "#endGame" ).prop('disabled', false);
       }
     }
   });
@@ -112,7 +115,19 @@ $(document).ready(function(){
     $( "#playAgain" ).prop('disabled', true);
     $( "#flipCoin" ).prop('disabled', true);
     $( "#placeBet").prop('disabled', false)
+    $( "#endGame" ).prop('disabled', true);
     $(gameInstructions).html("Place a bet!");
+  });
+
+  // End game
+  $( "#endGame").click(function(){
+    $(gameInstructions).html("Your final score is: " + wallet);
+    $( "#playAgain").prop('disabled', true);
+    $( "#endGame").prop('disabled', true);
+    var parameters = {score: wallet};
+    $.post( '/addScore', parameters, function(data){
+      $(gameInstructions).append(" Your score was added to the Database");
+    });
   });
 
 
