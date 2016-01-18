@@ -17,11 +17,12 @@ router.get('/', function(req, res, next) {
 router.post('/addScore', function(req, res){
   var db = req.db;
   var collection = db.get('highScores');
+  var userName = req.body.user;
   var score = req.body.score;
   console.log(score + " Is the score for this player");
 
   collection.insert({
-    "name" : "TestUser",
+    "name"  : userName,
     "score" : score
   }, function(err, doc) {
     if (err) {

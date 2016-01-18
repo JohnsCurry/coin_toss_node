@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  var userName = prompt("What is your username?", 'username');
+
   $.preloadImages = function(){
     for (var i = 0; i < arguments.length; i++) {
       $("<img />").attr("src", arguments[i]);
@@ -124,7 +126,7 @@ $(document).ready(function(){
     $(gameInstructions).html("Your final score is: " + wallet);
     $( "#playAgain").prop('disabled', true);
     $( "#endGame").prop('disabled', true);
-    var parameters = {score: wallet};
+    var parameters = {user: userName, score: wallet};
     $.post( '/addScore', parameters, function(data){
       $(gameInstructions).append(" Your score was added to the Database");
     });
