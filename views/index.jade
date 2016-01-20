@@ -2,7 +2,6 @@ extends layout
 
 block content
   h1 Hello World
-  p Welcome to #{title}
 
   button(id="heads") Heads
   button(id="tails") Tails
@@ -18,9 +17,7 @@ block content
 
   ol
     each user, i in highScores
-      li
-        = user.name
-        = user.score 
+      li #{user.name}: #{user.score}
 
 
   script(src="/javascripts/jquery-2.2.0.js")

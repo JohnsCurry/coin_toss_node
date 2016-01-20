@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
       "highScores": docs
     });
   });
-  //res.render('index', { title: 'Express' });
 });
 
 router.post('/addScore', function(req, res){
